@@ -1,0 +1,183 @@
+*{
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 30px;
+
+    /* Vidrio espacial */
+    background: rgba(10, 15, 45, 0);
+
+    border-radius: 16px;
+
+    /* Brillo exterior */
+    box-shadow:
+        0 0 15px rgba(0, 200, 255, 0.25),
+        0 0 40px rgba(100, 50, 255, 0.15),
+        inset 0 0 20px rgba(100, 200, 255, 0.08);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    /* Borde luminoso */
+    border: 1px solid rgba(100, 220, 255, 0.5);
+
+    color: white;
+
+    position: relative;
+    z-index: 2;
+}
+
+h1{
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+li{
+    font-size: 30px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #030014;
+    font-family: "Orbitron", sans-serif;
+}
+
+/* Estrellas */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: -100%;
+    left: 0;
+
+    width: 100%;
+    height: 200%;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.8) 2px, transparent 4px),
+        radial-gradient(circle, rgba(120,200,255,0.6) 3px, transparent 6px),
+        radial-gradient(circle, rgba(255,255,255,0.5) 4px, transparent 8px);
+
+    background-size:
+        100px 100px,
+        180px 180px,
+        280px 280px;
+
+    filter: blur(2px);
+
+    animation: estrellas 12s linear infinite;
+}
+
+/* Segunda capa, más desenfocada */
+body::after {
+    background-image:
+        radial-gradient(circle, rgba(150,200,255,0.5) 4px, transparent 10px),
+        radial-gradient(circle, rgba(255,255,255,0.4) 5px, transparent 12px);
+
+    background-size:
+        220px 220px,
+        350px 350px;
+
+    filter: blur(5px);
+
+    opacity: 0.7;
+
+    animation-duration: 18s;
+}
+
+@keyframes estrellas {
+    from {
+        transform: translateY(-20%);
+    }
+
+    to {
+        transform: translateY(20%);
+    }
+}
+
+/* 🖱️ Cuando pasás el mouse */
+#lista-trabajos {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+#lista-trabajos li {
+    width: 100%;
+    text-align: center;
+}
+
+#lista-trabajos li a {
+    display: inline-block;
+
+    color: #55cfff;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    padding: 8px 20px;
+
+    border-radius: 10px;
+
+    text-shadow:
+        0 0 5px #55cfff,
+        0 0 10px #008cff;
+
+    transition: all 0.3s ease;
+}
+
+
+/* ⭐ Links que ya visitaste */
+#lista-trabajos li a:visited {
+    color: #55cfff;
+    text-decoration: none;
+
+    text-shadow:
+        0 0 5px #55cfff,
+        0 0 12px #008cff,
+        0 0 20px #0066ff;
+}
+
+
+/* ✨ Cuando pasás el mouse */
+#lista-trabajos li a:hover {
+    color: white;
+
+    background: rgba(0, 180, 255, 0.12);
+
+    text-shadow:
+        0 0 5px white,
+        0 0 15px #00eaff,
+        0 0 30px #008cff;
+
+    box-shadow:
+        0 0 10px rgba(0, 220, 255, 0.5),
+        0 0 25px rgba(0, 140, 255, 0.3);
+
+    transform: scale(1.05);
+}
