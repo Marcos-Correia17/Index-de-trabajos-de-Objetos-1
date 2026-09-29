@@ -1,63 +1,29 @@
-*{
-    margin: 10px;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding: 30px;
-
-    /* Vidrio espacial */
-    background: rgba(10, 15, 45, 0);
-
-    border-radius: 16px;
-
-    /* Brillo exterior */
-    box-shadow:
-        0 0 15px rgba(0, 200, 255, 0.25),
-        0 0 40px rgba(100, 50, 255, 0.15),
-        inset 0 0 20px rgba(100, 200, 255, 0.08);
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    /* Borde luminoso */
-    border: 1px solid rgba(100, 220, 255, 0.5);
-
-    color: white;
-
-    position: relative;
-    z-index: 2;
-}
-
-h1{
-    font-family: "Orbitron", sans-serif;
-    font-weight: 700;
-    font-size: 50px;
-}
-ul{
-    list-style: none;
+/* 🛠️ Reseteo optimizado para evitar desbordes inesperados */
+* {
+    margin: 0;
     padding: 0;
-    text-align: center;
-}
-
-li{
-    font-size: 30px;
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
     min-height: 100vh;
-    overflow: hidden;
+    
+    /* 🛠️ CAMBIADO: Permitimos scroll vertical general pero bloqueamos el horizontal */
+    overflow-y: auto;
+    overflow-x: hidden;
+    
     background: #030014;
     font-family: "Orbitron", sans-serif;
+
+    /* 🛠️ AGREGADO: Centrado perfecto en pantalla con márgenes de seguridad respirables */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px; 
 }
 
-/* Estrellas */
+/* Estrellas de Fondo */
 body::before,
 body::after {
     content: "";
@@ -106,13 +72,64 @@ body::after {
     from {
         transform: translateY(-20%);
     }
-
     to {
         transform: translateY(20%);
     }
 }
 
-/* 🖱️ Cuando pasás el mouse */
+/* Contenedor Principal (Vidrio Espacial) */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 40px 30px; /* 💡 Un poco más de padding superior para equilibrar el título */
+    
+    /* 🛠️ CAMBIADO: Ancho adaptable al 100% en móviles y máximo de 850px en PC */
+    width: 100%;
+    max-width: 850px;
+
+    /* Vidrio espacial intacto */
+    background: rgba(10, 15, 45, 0);
+    border-radius: 16px;
+
+    /* Brillo exterior intacto */
+    box-shadow:
+        0 0 15px rgba(0, 200, 255, 0.25),
+        0 0 40px rgba(100, 50, 255, 0.15),
+        inset 0 0 20px rgba(100, 200, 255, 0.08);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    /* Borde luminoso intacto */
+    border: 1px solid rgba(100, 220, 255, 0.5);
+
+    color: white;
+
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    margin-bottom: 25px; /* 🛠️ Reemplaza el margen global anterior para separar del título */
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+li {
+    font-size: 30px;
+}
+
+/* Lista de Trabajos */
 #lista-trabajos {
     list-style: none;
     padding: 0;
@@ -121,7 +138,8 @@ body::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: 15px; /* 💡 Aumentado ligeramente para evitar colisiones de sombras hoveadas */
+    width: 100%;
 }
 
 #lista-trabajos li {
@@ -151,7 +169,6 @@ body::after {
     transition: all 0.3s ease;
 }
 
-
 /* ⭐ Links que ya visitaste */
 #lista-trabajos li a:visited {
     color: #55cfff;
@@ -162,7 +179,6 @@ body::after {
         0 0 12px #008cff,
         0 0 20px #0066ff;
 }
-
 
 /* ✨ Cuando pasás el mouse */
 #lista-trabajos li a:hover {
@@ -180,4 +196,15 @@ body::after {
         0 0 25px rgba(0, 140, 255, 0.3);
 
     transform: scale(1.05);
+}
+
+/* 📱 Media query para asegurar legibilidad en pantallas muy chicas (Celulares) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 32px;
+    }
+    #lista-trabajos li a {
+        font-size: 18px;
+        padding: 6px 12px;
+    }
 }

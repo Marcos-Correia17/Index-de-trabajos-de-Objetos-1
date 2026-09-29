@@ -19,6 +19,13 @@ fetch("src/data/trabajos.json")
             lista.appendChild(li);
         });
 
+        // 🛠️ AGREGADO: Al finalizar la renderización, la página web entera hace scroll
+        // automático de forma suave hasta el final de la pantalla si hay nuevos elementos.
+        window.scrollTo({ 
+            top: document.body.scrollHeight, 
+            behavior: 'smooth' 
+        });
+
     })
     .catch(error => {
         console.error("No se pudo cargar trabajos.json:", error);
