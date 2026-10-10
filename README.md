@@ -22,3 +22,4 @@ Este repositorio funciona como un **índice centralizado**, donde se pueden enco
 ---
 
 > 🛠️ **Proyecto realizado para la materia Objetos 1 — UNQ**
+.
